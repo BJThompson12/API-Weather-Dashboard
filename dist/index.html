@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,46 +8,86 @@
   <link rel="stylesheet" href="output.css">
   <title>Document</title>
 </head>
-<body>
+
+<body class="p-1">
   <!-- header -->
   <header class="page-container">
     <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-center p-4">
       <div class="container">
-        <h1 class="ml-52">Weather Dashboard</h1>
+        <h1 class="">Weather Dashboard</h1>
       </div>
     </div>
   </header>
-  <Main class="flex" >
-<!-- search for city -->
-    <div class="border border-sky-500 w-1/5">
-      <h2>Search for a city</h2>
-      <div>
-        <div>
-          <input type="text">
-          <button>Search</button>
-        </div>
-        <div>
-          <!-- recent seaches buttons -->
+  <Main class="flex w-full">
+    <!-- search for city -->
+    <div class="weather border border-sky-500 w-1/4">
+      <div class="min-w-full flex flex-wrap justify-center ">
+        <h2 class="w-5/6">Search for a city:</h2>
+        <div class="flex flex-wrap w-full ">
+          <input type="search" class="weather-search border border-gray-500 my-2 w-5/6" placeholder="City">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white  py-1 w-5/6 my-2 rounded">Search</button>
+            <!-- recent seaches buttons -->
+            <button class="bg-slate-300 hover:bg-slate-500 text-black  py-1 w-5/6 my-2 rounded">Atlanta</button>
+          </div>
         </div>
       </div>
     </div>
-<!--weather container  -->
-    <div class="border border-red-500">
+    <!--weather container  -->
+    <div class=" flex-1 mr-28">
       <!-- main weather -->
-      <div class="border border-black">
-        <p>Cupcake ipsum dolor sit amet cake croissant fruitcake muffin. Sweet bonbon candy powder cheesecake muffin sesame snaps jujubes. Muffin macaroon cheesecake cookie souffl&eacute; cookie cheesecake lollipop candy canes. Halvah cotton candy sesame snaps chocolate bar. Sugar plum dessert drag&eacute;e macaroon chupa chups. Cake cheesecake wafer cotton candy. Danish jelly halvah jelly beans tootsie roll donut. Halvah cheesecake halvah jujubes sweet roll biscuit croissant wafer. Cake halvah chocolate bar sugar plum apple pie.</p>
+      <div class="border border-black p-2 w-full">
+        <h2 id="city-date" class="mb-2">Atlanta date and icon</h2>
+        <p id="current-temp"> Temp</p>
+        <p id="current-wind">Wind</p>
+        <p id="current-humidity">Humidity <span>%</span></p>
       </div>
       <!-- 5 day forecast -->
-      <div class="border border-emerald-400">
-        <div>
-          <h4>5-Day Forecast</h4>
+      <div class="border border-emerald-400 p-2">
+        <div class="mb-2">
+          <h3>5-Day Forecast:</h4>
+        </div>
+        <div class="flex flex-wrap justify-center">
+          <div id="day-1" class="w-28">
+            <p>9/14/2022</p>
+            <img src="" alt="">
+            <p id="current-temp"> Temp</p>
+            <p id="current-wind">Wind</p>
+            <p id="current-humidity">Humidity <span>%</span></p>
+          </div>
+          <div id="day-2"class="w-28">
+            <p>9/14/2022</p>
+            <img src="" alt="">
+            <p id="current-temp"> Temp</p>
+            <p id="current-wind">Wind</p>
+            <p id="current-humidity">Humidity <span>%</span></p>
+          </div>
+          <div id="day-3"class="w-28">
+            <p>9/14/2022</p>
+            <img src="" alt="">
+            <p id="current-temp"> Temp</p>
+            <p id="current-wind">Wind</p>
+            <p id="current-humidity">Humidity <span>%</span></p>
+          </div>
+          <div id="day-4"class="w-28">
+            <p>9/14/2022</p>
+            <img src="" alt="">
+            <p id="current-temp"> Temp</p>
+            <p id="current-wind">Wind</p>
+            <p id="current-humidity">Humidity <span>%</span></p>
+          </div>
+          <div id="day-5"class="w-28">
+            <p>9/14/2022</p>
+            <img src="" alt="">
+            <p id="current-temp"> Temp</p>
+            <p id="current-wind">Wind</p>
+            <p id="current-humidity">Humidity <span>%</span></p>
+          </div>
         </div>
       </div>
     </div>
 
-
-
-
   </main>
+  <script src="/src/js/script.js"></script>
 </body>
+
 </html>
