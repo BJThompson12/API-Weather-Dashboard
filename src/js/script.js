@@ -67,14 +67,23 @@ async function getWeatherApi (location){
 function splitData(city, data){
   //solve for the 2 functions
   //Current
-  currentWeather(city,data.list[0],data.city.timzone,)
+  currentWeather(city,data.list[0],data.city.timezone,);
   //Forecast
-  forecastWeathe(data.list)
+  //forecastWeather(data.list);
   // need a for loop 
   // create one card that is then created 5 times
 }
-// getWeatherApi()
 
-// event listener that triggers a function that captures the inpformation in the input field 
+function currentWeather(city, list, timezone){
+  console.log(city, list, timezone);
+  let cityName = city;
+  let timeZone = timezone;
+  let temp = list.main.temp;
+  let wind = list.wind.speed;
+  let humidity = list.main.humidity;
+  console.log(cityName, timeZone, temp, wind, humidity);
+
+  //pass to html
+}
 
 //get the coordinates from the geo API - it puills the first 5 - concerned with the first one
