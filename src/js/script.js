@@ -14,7 +14,6 @@ let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', getUserCity)
 
 var todayDate = moment().format('l');;
-// $('#currentDay').html(todayDate);
 
 function getUserCity (){
   // information from input field
@@ -84,7 +83,19 @@ function currentWeather(city, list, timezone){
 
   console.log(cityName, timeZone, temp, wind, humidity, weatherIcon);
 
+//get icon from weather api
+  let displayIcon =`https://openweathermap.org/img/wn/${weatherIcon}.png`
+  let iconDiv = document.getElementById('weatherIcon')
+
   //pass to html
+  document.getElementById('selected-city').innerHTML = cityName; 
+  document.getElementById('city-date').innerHTML = `(${todayDate})`;
+  
+  document.getElementById("weather-icon").src= displayIcon;
+  iconDiv.classList.add('border');
+  document.getElementById('current-temp').innerHTML = `Temp: ${temp}&degF`;
+  document.getElementById('current-wind').innerHTML = `Wind ${wind} MPH`;
+  document.getElementById('current-humidity').innerHTML = `Humidity ${humidity} %`;
 }
 
 //get the coordinates from the geo API - it puills the first 5 - concerned with the first one

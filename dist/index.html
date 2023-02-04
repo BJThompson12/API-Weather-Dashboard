@@ -14,7 +14,7 @@
   <header class="page-container">
     <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-center p-4">
       <div class="container">
-        <h1 class="">Weather Dashboard</h1>
+        <h1 class="text-3xl font-bold">Weather Dashboard</h1>
       </div>
     </div>
   </header>
@@ -22,7 +22,7 @@
     <!-- search for city -->
     <div class="weather border border-sky-500 w-1/4">
       <div class="min-w-full flex flex-wrap justify-center ">
-        <h2 class="w-5/6">Search for a city:</h2>
+        <h2 class="w-5/6 text-xl font-bold">Search for a city:</h2>
         <div class="flex flex-wrap w-full ">
           <input id="userCity" type="search" class="weather-search border border-gray-500 my-2 w-5/6" placeholder="City"><span id="previousCityInput"></span>
           <button id="searchBtn" class="bg-blue-500 hover:bg-blue-700 text-white  py-1 w-5/6 my-2 rounded">Search</button>
@@ -32,18 +32,28 @@
         </div>
       </div>
     </div>
+
+
+
     <!--weather container  -->
     <div class=" flex-1 mr-28">
       <!-- main weather -->
       <div class="border border-black p-2 w-full">
-        <h2 id="city-date" class="mb-2">Atlanta date and icon</h2>
-        <p id="current-temp"> Temp</p>
-        <p id="current-wind">Wind</p>
-        <p id="current-humidity">Humidity <span>%</span></p>
+        <div class="flex flex-1" >
+          <p id="selected-city" class="text-2xl font-bold mr-2">test</p>
+          <p id="city-date" class="text-2xl font-bold mr-2">test</p>
+          <img id="weather-icon" class="border bg-red-600" src="https://openweathermap.org/img/wn/03n.png" alt="">
+        </div>
+        <p id="current-temp" class=""></p>
+        <p id="current-wind" class=""></p>
+        <p id="current-humidity" class=""></p>
       </div>
+
+
+
       <!-- 5 day forecast -->
       <div class="border border-emerald-400 p-2">
-        <div class="mb-2">
+        <div class="mb-2 text-xl font-bold">
           <h3>5-Day Forecast:</h4>
         </div>
         <div class="flex flex-wrap justify-center">
