@@ -84,15 +84,13 @@ function currentWeather(city, list, timezone){
   console.log(cityName, timeZone, temp, wind, humidity, weatherIcon);
 
 //get icon from weather api
-  let displayIcon =`https://openweathermap.org/img/wn/${weatherIcon}.png`
+  let displayIcon =`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   let iconDiv = document.getElementById('weatherIcon')
 
   //pass to html
   document.getElementById('selected-city').innerHTML = cityName; 
   document.getElementById('city-date').innerHTML = `(${todayDate})`;
-  
-  document.getElementById("weather-icon").src= displayIcon;
-  iconDiv.classList.add('border');
+  document.getElementById("weather-icon").src = displayIcon;
   document.getElementById('current-temp').innerHTML = `Temp: ${temp}&degF`;
   document.getElementById('current-wind').innerHTML = `Wind ${wind} MPH`;
   document.getElementById('current-humidity').innerHTML = `Humidity ${humidity} %`;
