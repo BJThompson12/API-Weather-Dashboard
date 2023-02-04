@@ -10,14 +10,11 @@ previousCityInput.innerHTML = cityInput.value
 
 let getCurrentWeather = `${currentWeatherEndpoint}${cityInput}'&appid='${weatherKey}`
 
-// const app  = {
-//   init: () => {
-//     document.getElementById('searchBtn').addEventListener('click',getWeatherApi )
-//   }
-// }
-
 let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', getUserCity)
+
+var todayDate = moment().format('l');;
+// $('#currentDay').html(todayDate);
 
 function getUserCity (){
   // information from input field
@@ -26,6 +23,7 @@ function getUserCity (){
   }
   // declare the input is valid
   let search = cityInput.value.trim()
+  console.log(todayDate);
   // check for the response in the input field
   console.log(search);
   //pass the variable to the next function
