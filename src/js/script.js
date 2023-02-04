@@ -79,7 +79,10 @@ function currentWeather(city, list, timezone){
   let temp = list.main.temp;
   let wind = list.wind.speed;
   let humidity = list.main.humidity;
-  console.log(cityName, timeZone, temp, wind, humidity);
+  let weatherIcon = list.weather[0].icon;
+  temp = Math.floor((temp - 273) * 9) / 5 + 32; 
+
+  console.log(cityName, timeZone, temp, wind, humidity, weatherIcon);
 
   //pass to html
 }
