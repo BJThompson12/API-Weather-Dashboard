@@ -20,7 +20,7 @@
   </header>
   <Main class="flex w-full">
     <!-- search for city -->
-    <div class="weather border border-sky-500 w-1/4">
+    <div class="weather border border-sky-500 w-1/4 my-2">
       <div class="min-w-full flex flex-wrap justify-center ">
         <h2 class="w-5/6 text-xl font-bold">Search for a city:</h2>
         <div class="flex flex-wrap w-full ">
@@ -36,7 +36,7 @@
 
 
     <!--weather container  -->
-    <div class=" flex-1 mr-28">
+    <div class=" flex-1 mr-28 my-2">
       <!-- main weather -->
       <div class="border border-black p-2 w-full">
         <div id="" class="flex flex-1 items-center" >
@@ -51,51 +51,61 @@
         <p id="current-humidity" class=""></p>
       </div>
 
-
-
       <!-- 5 day forecast -->
-      <div id="" class="border border-emerald-400 p-2">
+      <div id="" class=" p-2">
         <div class="mb-2 text-xl font-bold">
           <h3>5-Day Forecast:</h4>
         </div>
-        <div id="weather-forecast" class=" weather-forecast flex flex-wrap justify-center">
+        <div class="flex flex-wrap gap-4 justify-center">
 
-          <div id="day-1" class="weather-forecast-item w-28">
-            <p>9/14/2022</p>
-            <img src="" alt="">
-            <p id="current-temp"> Temp</p>
-            <p id="current-wind">Wind</p>
-            <p id="current-humidity">Humidity <span>%</span></p>
-          </div>
-
-          <div id="day-2"class="weather-forecast-item w-28">
-            <p>9/14/2022</p>
-            <img src="" alt="">
-            <p id="current-temp"> Temp</p>
-            <p id="current-wind">Wind</p>
-            <p id="current-humidity">Humidity <span>%</span></p>
+          <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
+            <div class="font-bold my-2">9/14/2022</div>
+            <div class="my-3">
+              <img class="h-9 w-8" src="https://openweathermap.org/img/w/10d.png" alt="">
+            </div>
+            <div class="my-3" id="current-temp">Temp: 63.55 &degF</div>
+            <div class="my-3" id="current-wind">Wind: 3.94 MPH</div>
+            <div class="my-3" id="current-humidity">Humidity: 63 %</div>
           </div>
 
-          <div id="day-3"class="weather-forecast-item w-28">
-            <p>9/14/2022</p>
-            <img src="" alt="">
-            <p id="current-temp"> Temp</p>
-            <p id="current-wind">Wind</p>
-            <p id="current-humidity">Humidity <span>%</span></p>
+          <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3">
+            <div class="font-bold my-2">9/14/2022</div>
+            <div class="my-3">
+              <img class="h-9 w-8" src="https://openweathermap.org/img/w/10d.png" alt="">
+            </div>
+            <div class="my-3" id="current-temp">Temp: 63.55&degF</div>
+            <div class="my-3" id="current-wind">Wind: 3.94 MPH</div>
+            <div class="my-3" id="current-humidity">Humidity: 63%</div>
           </div>
-          <div id="day-4"class="weather-forecast-item w-28">
-            <p>9/14/2022</p>
-            <img src="" alt="">
-            <p id="current-temp"> Temp</p>
-            <p id="current-wind">Wind</p>
-            <p id="current-humidity">Humidity <span>%</span></p>
+
+          <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3">
+            <div class="font-bold my-2">9/14/2022</div>
+            <div class="my-3">
+              <img class="h-9 w-8" src="https://openweathermap.org/img/w/10d.png" alt="">
+            </div>
+            <div class="my-3" id="current-temp">Temp: 63.55&degF</div>
+            <div class="my-3" id="current-wind">Wind: 3.94 MPH</div>
+            <div class="my-3" id="current-humidity">Humidity: 63%</div>
           </div>
-          <div id="day-5"class="weather-forecast-item w-28">
-            <p>9/14/2022</p>
-            <img src="" alt="">
-            <p id="current-temp"> Temp</p>
-            <p id="current-wind">Wind</p>
-            <p id="current-humidity">Humidity <span>%</span></p>
+
+          <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3">
+            <div class="font-bold my-2">9/14/2022</div>
+            <div class="my-3">
+              <img class="h-9 w-8" src="https://openweathermap.org/img/w/10d.png" alt="">
+            </div>
+            <div class="my-3" id="current-temp">Temp: 63.55&degF</div>
+            <div class="my-3" id="current-wind">Wind: 3.94 MPH</div>
+            <div class="my-3" id="current-humidity">Humidity: 63%</div>
+          </div>
+
+          <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3">
+            <div class="font-bold my-2">9/14/2022</div>
+            <div class="my-3">
+              <img class="h-9 w-8" src="https://openweathermap.org/img/w/10d.png" alt="">
+            </div>
+            <div class="my-3" id="current-temp">Temp: 63.55&degF</div>
+            <div class="my-3" id="current-wind">Wind: 3.94 MPH</div>
+            <div class="my-3" id="current-humidity">Humidity: 63%</div>
           </div>
         </div>
       </div>
@@ -108,4 +118,4 @@
   <script src="/src/js/script.js"></script>
 </body>
 
-</html>`
+</html>

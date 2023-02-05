@@ -68,12 +68,9 @@ async function getWeatherApi(location) {
 function splitData(city, data) {
   //solve for the 2 functions
   //Current
-
   currentWeather(city, data.list[0], data.city.timezone);
 
-  // currentWeather(city, data.list[0], data.city.timezone,);
-  //Forecast
-
+  // 5 day Forecast
   forecastWeather(city, data.list);
 }
 
