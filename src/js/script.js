@@ -52,7 +52,7 @@ async function getWeatherApi (location){
   let {lat, lon} = location
   let city = location.name
   // console.log(getCurrentWeateather);
-  let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}`)
+  let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherKey}`)
     let data = await response.json() 
     console.log(data);
     // need to solve for current and 5 day
@@ -64,28 +64,58 @@ async function getWeatherApi (location){
 function splitData(city, data){
   //solve for the 2 functions
   //Current
-  currentWeather(city,data.list[0],data.city.timezone,);
+  
+   currentWeather(city, data.list[0], data.city.timezone,);
+  
+  // currentWeather(city, data.list[0], data.city.timezone,);
   //Forecast
-  //forecastWeather(data.list);
+  
+  forecastWeather(city, data.list);
+  
+};
+
+function forecastWeather(city, list){
+  console.log(city, list);
   // need a for loop 
   // create one card that is then created 5 times
-}
 
-function currentWeather(city, list, timezone){
-  console.log(city, list, timezone);
+  for (let index = 1; index <= 5; index++) {
   let cityName = city;
-  let timeZone = timezone;
+  // let timeZone = timezone;
+  let temp = list[index].main.temp;
+  let wind = list[index].wind.speed;
+  let humidity = list[index].main.humidity;
+  let weatherIcon = list[index].weather[0].icon;
+  // temp = Math.floor((temp - 273) * 9) / 5 + 32; 
+  let displayIcon =`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  const weatherForecastEl = document.getElementById('weather-forecast')
+  console.log(cityName, temp, wind, humidity, weatherIcon);
+  
+  weatherForecastEl.innerHTML =
+    `<div class="weather-forecast-item w-28">
+            <p>${moment().add(1,'days').format('l')}</p>
+            <img src="${displayIcon}" alt="">
+            <p id="current-temp">Temp: ${temp}&degF</p>
+            <p id="current-wind">Wind: ${wind} MPH</p>
+            <p id="current-humidity">Humidity: ${humidity}%</p>
+          </div>`
+  
+}}
+
+function currentWeather(city, list){
+  console.log(city, list);
+  let cityName = city;
+  // let timeZone = timezone;
   let temp = list.main.temp;
   let wind = list.wind.speed;
   let humidity = list.main.humidity;
   let weatherIcon = list.weather[0].icon;
   temp = Math.floor((temp - 273) * 9) / 5 + 32; 
 
-  console.log(cityName, timeZone, temp, wind, humidity, weatherIcon);
+  console.log(cityName, temp, wind, humidity, weatherIcon);
 
 //get icon from weather api
   let displayIcon =`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
-  let iconDiv = document.getElementById('weatherIcon')
 
   //pass to html
   document.getElementById('selected-city').innerHTML = cityName; 
@@ -95,5 +125,5 @@ function currentWeather(city, list, timezone){
   document.getElementById('current-wind').innerHTML = `Wind ${wind} MPH`;
   document.getElementById('current-humidity').innerHTML = `Humidity ${humidity} %`;
 }
-
+ function build(){}
 //get the coordinates from the geo API - it puills the first 5 - concerned with the first one
