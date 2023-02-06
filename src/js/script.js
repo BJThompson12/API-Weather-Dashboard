@@ -7,7 +7,7 @@ const forecastWeatherEndpoint =
 
 const cityInput = document.getElementById('userCity');
 const newCityInput = document.getElementById('previousCityInput');
-previousCityInput.innerHTML = cityInput.value;
+// previousCityInput.innerHTML = cityInput.value;
 
 let getCurrentWeather = `${currentWeatherEndpoint}${cityInput}'&appid='${weatherKey}`;
 
@@ -43,6 +43,7 @@ function getCoordinates(search) {
   cityInput.value = ''
   //add the variable in the parameters to pass it like a hand off
   let apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${weatherKey}`;
+  console.log(apiUrl);
 
   fetch(apiUrl)
     .then(function (response) {
@@ -104,7 +105,7 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
   
   
   recentBtnEl.innerHTML += `
-  <button class="bg-slate-300 hover:bg- text-black  py-1 w-full my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
+  <button class="bg-slate-300 hover:bg- text-black  py-1 my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
   `
 } 
 } else {
@@ -113,7 +114,7 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
   let recentBtnEl = document.getElementById('recentBtn')
   
   recentBtnEl.innerHTML += `
-  <button class="bg-slate-300 hover:bg- text-black  py-1 w-full my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
+  <button class="bg-slate-300 hover:bg- text-black  py-1 my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
   `
 }
 }

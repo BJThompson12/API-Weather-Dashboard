@@ -2,11 +2,16 @@
 module.exports = {
   content: [
     "./src/*.{html,js}",
-    "./src/js/script.js"
+    "./src/js/script.js",
     "./index.html"
 ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'md': '768px',
+      // => @media (min-width: 768px) 
+      }
+    },
   },
   plugins: [],
 }

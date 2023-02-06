@@ -18,19 +18,19 @@
       </div>
     </div>
   </header>
-  <Main class="flex w-full mb-36">
+  <Main class="flex flex-col-reverse w-full mb-36 md:flex-row  ">
     <!-- search for city -->
-    <div class="weather max-w-2xl  w-1/4  my-2 flex flex-wrap">
+    <div class="weather max-w-2xl  w-1/4  my-2">
       <!-- <div class="border-2 border-pink-800 min-w-full "> -->
-        <div class="flex flex-wrap w-full">
+        <div class="flex flex-col">
          <label for="default-input" class="block mb-2 text-xl font-bold mx-2">Search for a city:</label>
-         <input id="userCity" type="search" name="city" class="weather-search border border-gray-500 rounded my-2 w-full mx-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="  City"><span id="previousCityInput"></span>
+         <input id="userCity" type="search" name="city" class="weather-search border pl-4  border-gray-500 mb-2 mx-2 rounded focus:ring-blue-500 focus:border-blue-500"
+            placeholder="City"/>
          <button id="searchBtn"
-            class="bg-blue-500 hover:bg-blue-700 text-white  py-1 w-full rounded mx-2">Search</button>
+            class="bg-blue-500 hover:bg-blue-700 text-white  py-1 rounded mx-2">Search</button>
 
           <!-- recent seaches buttons -->
-         <div id="recentBtn" class="w-full flex flex-wrap">
+         <div id="recentBtn" class="w-full flex flex-col">
             <!-- <button class="bg-slate-300 hover:bg- text-black  py-1 w-full my-2 mx-2 rounded">Atlanta</button> -->
          </div>
 
