@@ -42,7 +42,7 @@ function getCoordinates(search) {
   // clear out the input field
   cityInput.value = ''
   //add the variable in the parameters to pass it like a hand off
-  let apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${weatherKey}`;
+  let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${weatherKey}`;
   console.log(apiUrl);
 
   fetch(apiUrl)
