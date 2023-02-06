@@ -15,7 +15,12 @@ let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', getUserCity);
 
 let recentBtnEl = document.getElementById('recentBtn')
+recentBtnEl.addEventListener('click', (event) => choiceClicked (event));
 
+function choiceClicked (event){
+  console.log(event);
+  getCoordinates(event.target.innerHTML);
+}
 var todayDate = moment().format('l');
 
 function getUserCity() {
