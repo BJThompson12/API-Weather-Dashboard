@@ -69,21 +69,9 @@ async function getWeatherApi(location) {
   let data = await response.json();
   console.log(data);
   // need to solve for current and 5 day
-  // carry data and split for each
   //carry the data and split to in a funciton
   forecastWeather(city, data.list);
 }
-
-// function splitData(city, data) {
-//   //solve for the 2 functions
-//   console.log(city, data);
-//   //Current
-
-//   // currentWeather(city, data.list[0], data.city.timezone);
-
-//   // 5 day Forecast
-//   forecastWeather(city, data.list);
-// }
 
 function forecastWeather(city, list) {
   console.log(city, list);
@@ -95,7 +83,6 @@ function forecastWeather(city, list) {
 // add the score to the array
   if (!cityChoiceArray.includes((city))) {
   console.log('search exists');;
-  
 
   cityChoiceArray.push(city);
 // when sending to local systme must stringify and then set it
@@ -118,8 +105,6 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
   `
 }
 }
-  
-  // need a for loop
   // create one card that is then created 5 times
   const currentWeatherEL = document.getElementById('current-weather');
   const weatherForecastEl = document.getElementById('weather-forecast');
@@ -131,7 +116,6 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
     let wind = list[index].wind.speed;
     let humidity = list[index].main.humidity;
     let weatherIcon = list[index].weather[0].icon;
-    // temp = Math.floor((temp - 273) * 9) / 5 + 32;
     let displayIcon = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
     if (index === 0) {
       currentWeatherEL.innerHTML = `<div class="flex flex-1 items-center">
@@ -147,7 +131,7 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
     }
 
     if (index > 0) {
-      weatherForecastEl.innerHTML += `<div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
+      weatherForecastEl.innerHTML += `<div id="" class="weather-forecast-item bg-slate-700 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
       <div class="font-bold my-2">${moment()
         .add(index, 'days')
         .format('l')}</div>
@@ -162,7 +146,3 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
   }
 }
 
-function clearStorage() {
-  localStorage.clear();
-  reload();
-}
