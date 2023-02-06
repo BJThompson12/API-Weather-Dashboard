@@ -9,7 +9,7 @@
   <title>Document</title>
 </head>
 
-<body class="border-2 border-black p-1">
+<body class="border-2 p-1">
   <!-- header -->
   <header class="page-container">
     <div class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-center p-4">
@@ -20,49 +20,45 @@
   </header>
   <Main class="flex flex-col-reverse w-full mb-36 md:flex-row ">
     <!-- search for city -->
-    <div class="weather max-w-2xl  w-1/4  my-2">
-      <!-- <div class="border-2 border-pink-800 min-w-full "> -->
+    <div class="weather w-3\/4 md:max-w-2xl md:w-1/4 mx-2 my-2 flex flex-col ">
         <div class="flex flex-col">
-         <label for="default-input" class="block mb-2 text-xl font-bold mx-2">Search for a city:</label>
+         <label for="default-input" class="text-center mb-2 text-xl font-bold mx-2">Search for a city:</label>
          <input id="userCity" type="search" name="city" class="weather-search border pl-4  border-gray-500 mb-2 mx-2 rounded focus:ring-blue-500 focus:border-blue-500"
             placeholder="City"/>
          <button id="searchBtn"
             class="bg-blue-500 hover:bg-blue-700 text-white  py-1 rounded mx-2">Search</button>
-
           <!-- recent seaches buttons -->
          <div id="recentBtn" class="w-full flex flex-col">
             <!-- <button class="bg-slate-300 hover:bg- text-black  py-1 w-full my-2 mx-2 rounded">Atlanta</button> -->
          </div>
-
         </div>
-      </div>
     </div>
     </div>
 
     <!--weather container  -->
-    <div class=" flex-1 mr-28 my-2 md\:flex-row ">
+    <div class=" flex-1 my-2 md:mr-28 ">
       <!-- current weather -->
       <div id="current-weather" class="border border-black p-2 w-full">
-        <div class="flex flex-1 items-center">
+        <div class="flex flex-1 justify-center">
           <p id="selected-city" class="text-2xl font-bold mr-2"></p>
           <div id="city-date" class="text-2xl font-bold mr-2"></div>
           <div class="h-8 w-8">
             <img id="weather-icon" class="" src="" alt="">
           </div>
         </div>
-        <div id="current-temp" class=""></div>
-        <div id="current-wind" class=""></div>
-        <div id="current-humidity" class=""></div>
+        <div id="current-temp" class="text-center"></div>
+        <div id="current-wind" class="text-center"></div>
+        <div id="current-humidity" class="text-center"></div>
       </div>
 
       <!-- 5 day forecast -->
-      <div id="" class=" p-2">
-        <div class="mb-2 text-xl font-bold">
+      <div id="" class=" p-2 flex flex-col">
+        <div class="mb-2 text-xl font-bold text-center">
           <h3>5-Day Forecast:</h4>
         </div>
-        <div id="weather-forecast" class="flex flex-wrap gap-4 justify-center">
+        <div id="weather-forecast" class="flex flex-wrap gap-4 justify-center md:">
 
-          <!-- <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
+          <div id="" class="weather-forecast-item bg-slate-800 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
             <div class="font-bold my-2">9/14/2022</div>
             <div class="my-3">
               <img class="h-9 w-8" src="https://openweathermap.org/img/w/10d.png" alt="">
@@ -112,7 +108,7 @@
             <div class="my-3" id="current-humidity">Humidity: 63%</div>
           </div>
         </div>
-      </div> -->
+      </div>
         </div>
 
   </main>
