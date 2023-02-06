@@ -622,6 +622,10 @@ video {
   flex: 1 1 0%;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -789,7 +793,29 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:mr-0 {
+    margin-right: 0px;
+  }
+
+  .md\:mr-28 {
+    margin-right: 7rem;
+  }
+
+  .md\:mr-2 {
+    margin-right: 0.5rem;
+  }
+
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:bg-slate-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+  }
+
+  .md\:bg-slate-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(15 23 42 / var(--tw-bg-opacity));
   }
 }
