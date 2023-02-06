@@ -33,13 +33,14 @@ function getUserCity() {
   // check for the response in the input field
   console.log(search);
 
-  
   //pass the variable to the next function
   //the variable can be used in the next function if passed
   getCoordinates(search);
 }
 
 function getCoordinates(search) {
+  // clear out the input field
+  cityInput.value = ''
   //add the variable in the parameters to pass it like a hand off
   let apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${weatherKey}`;
 
