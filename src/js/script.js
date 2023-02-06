@@ -14,6 +14,8 @@ let getCurrentWeather = `${currentWeatherEndpoint}${cityInput}'&appid='${weather
 let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', getUserCity);
 
+let recentBtnEl = document.getElementById('recentBtn')
+
 var todayDate = moment().format('l');
 
 function getUserCity() {
@@ -26,44 +28,11 @@ function getUserCity() {
   // check for the response in the input field
   console.log(search);
 
-  let cityChoiceArray =
-    JSON.parse(window.localStorage.getItem('previousCities')) || [];
-
-  let input = document.getElementById('userCity').value;
-  //   //set to local storage
-  //  localStorage.setItem('city', input);
-  // add the score to the array
-  cityChoiceArray.push(search);
-  // when sending to local systme must stringify and then set it
-  window.localStorage.setItem('previousCities', JSON.stringify(cityChoiceArray));
-
+  
   //pass the variable to the next function
   //the variable can be used in the next function if passed
   getCoordinates(search);
 }
-
-var setSavedSearches = function (city, savedSearches) {
-  var savedSearches = {
-    city,
-    displayIcon,
-    currentTemp,
-    currentWind,
-    currentHumidity,
-  };
-  console.log(city);
-  console.log(savedSearches);
-  //stingify to convert forecast objects to string
-  localStorage.setItem(city, JSON.stringify(savedSearches));
-};
-//  function storeInLocalStorage(savedSearches, search) {
-//     var data = localStorage.getItem('savedSearches');
-
-//     data = data ? JSON.parse(data) : [];
-
-//     data.push(search);
-
-//     localStorage.setItem(search, JSON.stringify(data));
-//   }
 
 function getCoordinates(search) {
   //add the variable in the parameters to pass it like a hand off
@@ -111,6 +80,38 @@ async function getWeatherApi(location) {
 
 function forecastWeather(city, list) {
   console.log(city, list);
+  recentBtnEl.innerHTML = ''
+  let cityChoiceArray =
+  JSON.parse(window.localStorage.getItem('previousCities')) || [];
+
+//   //set to local storage
+// add the score to the array
+  if (!cityChoiceArray.includes((city))) {
+  console.log('search exists');;
+  
+
+  cityChoiceArray.push(city);
+// when sending to local systme must stringify and then set it
+window.localStorage.setItem('previousCities', JSON.stringify(cityChoiceArray));
+
+for (let index = 0; index < cityChoiceArray.length; index++) {
+  
+  
+  recentBtnEl.innerHTML += `
+  <button class="bg-slate-300 hover:bg- text-black  py-1 w-full my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
+  `
+} 
+} else {
+
+for (let index = 0; index < cityChoiceArray.length; index++) {
+  let recentBtnEl = document.getElementById('recentBtn')
+  
+  recentBtnEl.innerHTML += `
+  <button class="bg-slate-300 hover:bg- text-black  py-1 w-full my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
+  `
+}
+}
+  
   // need a for loop
   // create one card that is then created 5 times
   const currentWeatherEL = document.getElementById('current-weather');
