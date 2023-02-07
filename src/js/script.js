@@ -9,15 +9,26 @@ const cityInput = document.getElementById('userCity');
 const newCityInput = document.getElementById('previousCityInput');
 // previousCityInput.innerHTML = cityInput.value;
 
+const inputEl = document.getElementById('userCity');
+inputEl.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    document.getElementById('searchBtn').click();
+  }
+});
+
 let getCurrentWeather = `${currentWeatherEndpoint}${cityInput}'&appid='${weatherKey}`;
 
 let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', getUserCity);
 
-let recentBtnEl = document.getElementById('recentBtn')
-recentBtnEl.addEventListener('click', (event) => choiceClicked (event));
+let recentBtnEl = document.getElementById('recentBtn');
+recentBtnEl.addEventListener('click', (event) => choiceClicked(event));
 
-function choiceClicked (event){
+let historyBtnEl = document.getElementById('clearHistoryBtn');
+historyBtnEl.addEventListener('click', clearStorage);
+
+function choiceClicked(event) {
   console.log(event);
   getCoordinates(event.target.innerHTML);
 }
@@ -40,7 +51,7 @@ function getUserCity() {
 
 function getCoordinates(search) {
   // clear out the input field
-  cityInput.value = ''
+  cityInput.value = '';
   //add the variable in the parameters to pass it like a hand off
   let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${weatherKey}`;
   console.log(apiUrl);
@@ -75,37 +86,43 @@ async function getWeatherApi(location) {
 
 function forecastWeather(city, list) {
   console.log(city, list);
-  recentBtnEl.innerHTML = ''
+  // empty the recent buttons
+  recentBtnEl.innerHTML = '';
+  //declare the local storage array
   let cityChoiceArray =
-  JSON.parse(window.localStorage.getItem('previousCities')) || [];
+    JSON.parse(window.localStorage.getItem('previousCities')) || [];
 
-//   //set to local storage
-// add the score to the array
-  if (!cityChoiceArray.includes((city))) {
-  console.log('search exists');;
-
-  cityChoiceArray.push(city);
-// when sending to local systme must stringify and then set it
-window.localStorage.setItem('previousCities', JSON.stringify(cityChoiceArray));
-
-for (let index = 0; index < cityChoiceArray.length; index++) {
-  
-  
-  recentBtnEl.innerHTML += `
+  //set to local storage and add the score to the array
+  //if item does NOT exist
+  if (!cityChoiceArray.includes(city)) {
+    console.log('search exists');
+    // add (push) into the array
+    cityChoiceArray.push(city);
+    // when sending to local system must stringify and then set it
+    window.localStorage.setItem(
+      'previousCities',
+      JSON.stringify(cityChoiceArray)
+    );
+    // create the recent buttons
+    for (let index = 0; index < cityChoiceArray.length; index++) {
+      recentBtnEl.innerHTML += `
   <button class="bg-slate-300 hover:bg- text-black  py-1 my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
-  `
-} 
-} else {
+  `;
+    }
+  } else {
+    for (let index = 0; index < cityChoiceArray.length; index++) {
+      let recentBtnEl = document.getElementById('recentBtn');
 
-for (let index = 0; index < cityChoiceArray.length; index++) {
-  let recentBtnEl = document.getElementById('recentBtn')
-  
-  recentBtnEl.innerHTML += `
+      recentBtnEl.innerHTML += `
   <button class="bg-slate-300 hover:bg- text-black  py-1 my-2 mx-2 rounded">${cityChoiceArray[index]}</button>
-  `
-}
-}
-  // create one card that is then created 5 times
+  `;
+    }
+  }
+  // create clear history buttton
+  historyBtnEl.innerHTML = `
+<button class="bg-slate-400 hover:bg- text-black  py-1 my-2 mx-2 rounded">Clear Recent</button>
+`;
+  // create one card that is then created 5 times for the 5 day forecast
   const currentWeatherEL = document.getElementById('current-weather');
   const weatherForecastEl = document.getElementById('weather-forecast');
 
@@ -117,6 +134,7 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
     let humidity = list[index].main.humidity;
     let weatherIcon = list[index].weather[0].icon;
     let displayIcon = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    // create current day weather
     if (index === 0) {
       currentWeatherEL.innerHTML = `<div class="flex flex-1 items-center">
      <div id="selected-city" class="text-2xl font-bold  mr-2">${city}</div>
@@ -129,7 +147,7 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
    <div id="current-wind" class="">Wind: ${wind} MPH</div>
    <div id="current-humidity" class="">Humidity: ${humidity} %</div>`;
     }
-
+    // create 5 day forecast
     if (index > 0) {
       weatherForecastEl.innerHTML += `<div id="" class="weather-forecast-item bg-slate-700 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
       <div class="font-bold my-2">${moment()
@@ -145,4 +163,9 @@ for (let index = 0; index < cityChoiceArray.length; index++) {
     }
   }
 }
-
+// clear storage option
+function clearStorage() {
+  localStorage.clear();
+  recentBtnEl.innerHTML = '';
+  historyBtnEl.innerHTML = '';
+}
