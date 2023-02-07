@@ -28,11 +28,11 @@ recentBtnEl.addEventListener('click', (event) => choiceClicked(event));
 let historyBtnEl = document.getElementById('clearHistoryBtn');
 historyBtnEl.addEventListener('click', clearStorage);
 
+var todayDate = moment().format('l');
+
 function choiceClicked(event) {
-  console.log(event);
   getCoordinates(event.target.innerHTML);
 }
-var todayDate = moment().format('l');
 
 function getUserCity() {
   // information from input field
@@ -42,7 +42,6 @@ function getUserCity() {
   // declare the input is valid
   let search = cityInput.value.trim();
   // check for the response in the input field
-  console.log(search);
 
   //pass the variable to the next function
   //the variable can be used in the next function if passed
@@ -54,18 +53,19 @@ function getCoordinates(search) {
   cityInput.value = '';
   //add the variable in the parameters to pass it like a hand off
   let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${weatherKey}`;
-  console.log(apiUrl);
 
   fetch(apiUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       //pass the information into the next function
       // take all the data with you and THEN pull out what you need
       getWeatherApi(data[0]);
-    });
+    })
+    .catch((error) => {
+      console.log(error)
+      });
 }
 
 //be specific to carry only certain parts of the JSON
@@ -73,19 +73,16 @@ async function getWeatherApi(location) {
   //deconstruct to properties needed
   let { lat, lon } = location;
   let city = location.name;
-  console.log(location);
   let response = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherKey}`
   );
   let data = await response.json();
-  console.log(data);
   // need to solve for current and 5 day
   //carry the data and split to in a funciton
   forecastWeather(city, data.list);
 }
 
 function forecastWeather(city, list) {
-  console.log(city, list);
   // empty the recent buttons
   recentBtnEl.innerHTML = '';
   //declare the local storage array
@@ -95,7 +92,6 @@ function forecastWeather(city, list) {
   //set to local storage and add the score to the array
   //if item does NOT exist
   if (!cityChoiceArray.includes(city)) {
-    console.log('search exists');
     // add (push) into the array
     cityChoiceArray.push(city);
     // when sending to local system must stringify and then set it
