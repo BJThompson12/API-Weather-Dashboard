@@ -122,16 +122,15 @@ function forecastWeather(city, list) {
   const currentWeatherEL = document.getElementById('current-weather');
   const weatherForecastEl = document.getElementById('weather-forecast');
 
-  //clear the html element to replace with new html
-  weatherForecastEl.innerHTML = '';
-  for (let index = 0; index <= 5; index++) {
-    let temp = list[index].main.temp;
-    let wind = list[index].wind.speed;
-    let humidity = list[index].main.humidity;
+
+  for (let index = 0; index < 1; index++) {
+    let tempCurrent = list[index].main.temp;
+    let windCurrent = list[index].wind.speed;
+    let humidityCurrent = list[index].main.humidity;
     let weatherIcon = list[index].weather[0].icon;
     let displayIcon = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+
     // create current day weather
-    if (index === 0) {
       currentWeatherEL.innerHTML = `<div class="flex flex-1 items-center">
      <div id="selected-city" class="text-2xl font-bold  mr-2">${city}</div>
        <div id="city-date" class="text-2xl font-bold mr-2">${todayDate}</div>
@@ -139,12 +138,21 @@ function forecastWeather(city, list) {
          <img id="weather-icon" class="" src="${displayIcon}" alt="">
        </div>
      </div>
-   <div id="current-temp" class="">Temp: ${temp}&degF</div>
-   <div id="current-wind" class="">Wind: ${wind} MPH</div>
-   <div id="current-humidity" class="">Humidity: ${humidity} %</div>`;
-    }
+   <div id="current-temp" class="">Temp: ${tempCurrent}&degF</div>
+   <div id="current-wind" class="">Wind: ${windCurrent} MPH</div>
+   <div id="current-humidity" class="">Humidity: ${humidityCurrent} %</div>`;
+  }
+       //clear the html element to replace with new html
+     weatherForecastEl.innerHTML = '';
+
+   for (let index = 1; index <= 40; index+=8) {
+    let temp = list[index].main.temp;
+    let wind = list[index].wind.speed;
+    let humidity = list[index].main.humidity;
+    let weatherIcon = list[index].weather[0].icon;
+    let displayIcon = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+
     // create 5 day forecast
-    if (index > 0) {
       weatherForecastEl.innerHTML += `<div id="" class="weather-forecast-item bg-slate-700 text-white text-sm min-w-28 w-36 py-1 pl-1 pr-3 pb-4">
       <div class="font-bold my-2">${moment()
         .add(index, 'days')
@@ -158,7 +166,7 @@ function forecastWeather(city, list) {
     </div>`;
     }
   }
-}
+
 // clear storage option
 function clearStorage() {
   localStorage.clear();
